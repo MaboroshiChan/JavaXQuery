@@ -28,13 +28,13 @@ public class XQueryBaseListener implements XQueryListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPrimaryXq(XQueryParser.PrimaryXqContext ctx) { }
+	@Override public void enterVar(XQueryParser.VarContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPrimaryXq(XQueryParser.PrimaryXqContext ctx) { }
+	@Override public void exitVar(XQueryParser.VarContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -47,30 +47,6 @@ public class XQueryBaseListener implements XQueryListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitForClause(XQueryParser.ForClauseContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterVarBindings(XQueryParser.VarBindingsContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitVarBindings(XQueryParser.VarBindingsContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterVarBinding(XQueryParser.VarBindingContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitVarBinding(XQueryParser.VarBindingContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -119,18 +95,6 @@ public class XQueryBaseListener implements XQueryListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitCond(XQueryParser.CondContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterPrimaryCond(XQueryParser.PrimaryCondContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitPrimaryCond(XQueryParser.PrimaryCondContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

@@ -17,15 +17,15 @@ public interface XQueryListener extends ParseTreeListener {
 	 */
 	void exitXq(XQueryParser.XqContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link XQueryParser#primaryXq}.
+	 * Enter a parse tree produced by {@link XQueryParser#var}.
 	 * @param ctx the parse tree
 	 */
-	void enterPrimaryXq(XQueryParser.PrimaryXqContext ctx);
+	void enterVar(XQueryParser.VarContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link XQueryParser#primaryXq}.
+	 * Exit a parse tree produced by {@link XQueryParser#var}.
 	 * @param ctx the parse tree
 	 */
-	void exitPrimaryXq(XQueryParser.PrimaryXqContext ctx);
+	void exitVar(XQueryParser.VarContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link XQueryParser#forClause}.
 	 * @param ctx the parse tree
@@ -36,26 +36,6 @@ public interface XQueryListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitForClause(XQueryParser.ForClauseContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link XQueryParser#varBindings}.
-	 * @param ctx the parse tree
-	 */
-	void enterVarBindings(XQueryParser.VarBindingsContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link XQueryParser#varBindings}.
-	 * @param ctx the parse tree
-	 */
-	void exitVarBindings(XQueryParser.VarBindingsContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link XQueryParser#varBinding}.
-	 * @param ctx the parse tree
-	 */
-	void enterVarBinding(XQueryParser.VarBindingContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link XQueryParser#varBinding}.
-	 * @param ctx the parse tree
-	 */
-	void exitVarBinding(XQueryParser.VarBindingContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link XQueryParser#letClause}.
 	 * @param ctx the parse tree
@@ -96,16 +76,6 @@ public interface XQueryListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitCond(XQueryParser.CondContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link XQueryParser#primaryCond}.
-	 * @param ctx the parse tree
-	 */
-	void enterPrimaryCond(XQueryParser.PrimaryCondContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link XQueryParser#primaryCond}.
-	 * @param ctx the parse tree
-	 */
-	void exitPrimaryCond(XQueryParser.PrimaryCondContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link XQueryParser#ap}.
 	 * @param ctx the parse tree

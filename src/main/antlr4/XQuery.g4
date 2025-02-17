@@ -1,40 +1,82 @@
-grammar XQuery;
+grammar XQuery ;
 import XPath;
 
-// Parser Rules
-xq: primaryXq ( (COMMA | SLASH | DOUBLE_SLASH) xq )?
-    | '<' STRING '>' WS* '{' WS* xq WS* '}' WS* '</' STRING '>'
-    | forClause letClause whereClause returnClause
-    | letClause primaryXq ( (COMMA | SLASH | DOUBLE_SLASH) xq )?;
+/*Rules*/
 
-primaryXq: Var | ap | LPAREN xq RPAREN;
+xq
+    :   var
+    |   STRING
+    |   ap
+    |   LPR xq RPR
+    |   xq ',' xq
+    |   xq '/' rp
+    |   xq '//' rp
+    |   '<' NAME '>' '{' xq '}' '<''/' NAME '>'
+    |   forClause letClause? whereClause? returnClause
+    |   letClause xq
+    ;
 
-// for binding list
-forClause: FOR varBindings;
+var
+    : '$' NAME WS*
+    ;
 
-varBindings: varBinding (COMMA varBinding)*;
-varBinding: Var IN xq;
+forClause
+    : 'for' WS* (var 'in' WS*  xq WS* ',' WS* )* var 'in' WS* xq;
 
-// let binding listener
-letClause: LET varBindings;
+letClause
+    :'let' WS* (var WS* ':=' WS* xq WS* ',' WS* )* var ':=' WS* xq
+    ;
 
-whereClause: WHERE cond WS* | ;
-returnClause: RETURN xq WS*;
+whereClause
+    : 'where' WS* cond
+    ;
 
-cond: primaryCond ( (AND | OR) cond )?
-    | NOT cond
-    | 'some' Var IN xq 'satisfies' cond
-    | LPAREN cond RPAREN;
+returnClause
+    : 'return' WS* xq
+    ;
 
-primaryCond: xq (EQ | IS | DOUBLE_EQUALS | EQUALS) xq;
+cond
+    :   xq WS* '=' WS* xq
+    |   xq  WS* 'eq' WS* xq
+    |   xq  WS* '==' WS* xq
+    |   xq WS* 'is' WS*  xq
+    |   'empty' WS* LPR WS* xq WS* RPR
+    |   'some' WS* var 'in' WS* xq (WS* ',' WS*  var WS*  'in' WS* xq)* 'satisfies' WS* cond
+    |   LPR cond RPR
+    |   cond WS* 'and' WS* cond
+    |   cond  WS* 'or' WS* cond
+    |   'not' WS* cond
+    ;
 
-// Lexer Rules
-// Variables
-Var: '$' STRING WS*;
 
-// Keywords
-FOR: 'for' WS*;
-WHERE: 'where' WS*;
-IN: 'in' WS*;
-RETURN: 'return' WS*;
-LET: 'let' WS*;
+
+/*Tokens*/
+STRING
+:
+   '"'
+   (
+      ESCAPE
+      | ~["\\]
+   )* '"'
+   | '\''
+   (
+      ESCAPE
+      | ~['\\]
+   )* '\''
+;
+
+ESCAPE
+:
+   '\\'
+   (
+      ['"\\]
+   )
+;
+
+DOC: 'document';
+LPR: '(';
+RPR: ')';
+NAME: [a-zA-Z0-9_-]+;
+TXT: 'text()';
+
+WS: [ \t\r\n]+ -> skip;

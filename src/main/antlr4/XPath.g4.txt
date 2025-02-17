@@ -52,8 +52,5 @@ LBRACKET: WS* '[' WS*;
 RBRACKET: WS* ']' WS*;
 COMMA: WS* ',' WS*;
 
-LPR: '(';
-RPR: ')';
-
 // Whitespace
-WS: [ \t\r\n]+ -> skip;
+WS: [ \t\r\n]+;

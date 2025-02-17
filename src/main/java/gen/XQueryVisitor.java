@@ -16,29 +16,17 @@ public interface XQueryVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitXq(XQueryParser.XqContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link XQueryParser#primaryXq}.
+	 * Visit a parse tree produced by {@link XQueryParser#var}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitPrimaryXq(XQueryParser.PrimaryXqContext ctx);
+	T visitVar(XQueryParser.VarContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link XQueryParser#forClause}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitForClause(XQueryParser.ForClauseContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link XQueryParser#varBindings}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitVarBindings(XQueryParser.VarBindingsContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link XQueryParser#varBinding}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitVarBinding(XQueryParser.VarBindingContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link XQueryParser#letClause}.
 	 * @param ctx the parse tree
@@ -63,12 +51,6 @@ public interface XQueryVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitCond(XQueryParser.CondContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link XQueryParser#primaryCond}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitPrimaryCond(XQueryParser.PrimaryCondContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link XQueryParser#ap}.
 	 * @param ctx the parse tree

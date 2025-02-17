@@ -7,9 +7,14 @@ import org.antlr.v4.runtime.CommonTokenStream;
 
 public class XQueryExample {
     public static void main(String[] args) {
-        String input = "for $b in doc(\"bookstore.xml\")/bookstore/book\n" +
-                "where $b/price > 30\n" +
+        String input = "for $b in doc(\"bookstore.xml\")/bookstore/book[price = 2]\n" +
                 "return $b/title";
+
+        String input3 = "$a = 2";
+
+        String input2 = "$c";
+
+        System.out.println(input);
         CharStream inputStream = CharStreams.fromString(input);
 
         // create the lexer and parser
@@ -23,7 +28,7 @@ public class XQueryExample {
 
             // Create a visitor to traverse the parse tree
             XQueryBaseVisitor<String> visitor = new XQueryBaseVisitor<>() {
-                @Override
+
                 public String visitXq(XQueryParser.XqContext ctx) {
                     StringBuilder res = new StringBuilder();
                     for (int i = 0; i < ctx.getChildCount(); ++i) {
