@@ -15,7 +15,7 @@ forClause: FOR varBindings;
 varBindings: varBinding (COMMA varBinding)*;
 varBinding: Var IN xq;
 
-// let binding list
+// let binding listener
 letClause: LET varBindings;
 
 whereClause: WHERE cond WS* | ;

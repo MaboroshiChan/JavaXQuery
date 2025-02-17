@@ -29,7 +29,7 @@ f: rp
 
 // Lexer Rules
 INT: [0-9]+;
-STRING: [a-zA-Z0-9_]+;
+STRING: [a-zA-Z0-9_\n]+;
 FILENAME: 'doc(' '"' STRING '.xml' '"' ')';
 SLASH: '/';
 DOUBLE_SLASH: '//';
